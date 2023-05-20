@@ -1,0 +1,28 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5477/pizzeria-db}
+    username: ${SPRING_DATASOURCE_USERNAME:db_user}
+    password: ${SPRING_DATASOURCE_PASSWORD:db_user_password}
+  sql:
+    init:
+      mode: never
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+
+server:
+  error:
+    include-message: always
+  compression:
+    enabled: true
+
+logging:
+  level:
+    root: INFO
+    org.springframework: INFO
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

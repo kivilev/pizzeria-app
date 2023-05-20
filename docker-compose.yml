@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  pg-db:
+    image: postgres:14
+    container_name: pizzeria-pg-db
+    ports:
+      - "5477:5432"
+    environment:
+      POSTGRES_DB: pizzeria-db
+      POSTGRES_USER: db_user
+      POSTGRES_PASSWORD: db_user_password
+    restart: unless-stopped
+    networks:
+      - pizzeria-net
+
+  pizzeria-app:
+    build: .
+    container_name: pizzeria-app
+    depends_on:
+      - pg-db
+    ports:
+      - "8092:8080"
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://pg-db:5432/pizzeria-db
+      SPRING_DATASOURCE_USERNAME: db_user
+      SPRING_DATASOURCE_PASSWORD: db_user_password
+    networks:
+      - pizzeria-net
+
+networks:
+  pizzeria-net:

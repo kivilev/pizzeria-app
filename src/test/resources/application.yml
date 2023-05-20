@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:tc:postgresql:14:///pizzeria-db?TC_INITSCRIPT=db/init.sql&currentSchema=public
+    username: db_user_test
+    password: db_user_test_password
+  cache:
+    type: NONE
+  sql:
+    init:
+      mode: always
+#      data-locations: classpath:db/data.sql

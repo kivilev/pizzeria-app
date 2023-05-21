@@ -9,8 +9,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class PizzeriaAppApplication
+class PizzeriaApplication
 
 fun main(args: Array<String>) {
-	runApplication<PizzeriaAppApplication>(*args)
+    runApplication<PizzeriaApplication>(*args)
 }

@@ -1,0 +1,17 @@
+### Creating drone
+POST http://localhost:8080/api/v1/customers/
+Content-Type: application/json
+
+{
+    "fullName": "Naaaammmeee fuuulll",
+    "phoneNumber": "+1-000-222-2222",
+    "email": "com@com.com"
+}
+
+### Getting info about customer
+GET http://localhost:8080/api/v1/customers/742077a7-3807-428d-a9b4-f0284b207658
+
+### Get list of customers
+GET http://localhost:8080/api/v1/customers/
+
+

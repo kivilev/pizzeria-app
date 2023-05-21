@@ -28,5 +28,21 @@ services:
     networks:
       - pizzeria-net
 
+  pgadmin4:
+    image: dpage/pgadmin4:7.1
+    container_name: pizzeria-pgadmin4
+    depends_on:
+      - pg-db
+    ports:
+      - "8090:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: root@root.com
+      PGADMIN_DEFAULT_PASSWORD: root
+    hostname: pgadmin4
+    restart: always
+    tty: true
+    networks:
+      - pizzeria-net
+
 networks:
   pizzeria-net:

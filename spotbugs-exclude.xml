@@ -1,42 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <FindBugsFilter>
+
     <Match>
-        <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE"/>
-    </Match>
-    <Match>
-        <Bug pattern="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE"/>
-    </Match>
-    <Match>
-        <Bug pattern="EI_EXPOSE_REP,EI_EXPOSE_REP2"/>
-    </Match>
-    <Match>
-        <Bug pattern="SQL_NONCONSTANT_STRING_PASSED_TO_EXECUTE"/>
         <Or>
-            <Class name="io.github.mfvanek.pg.settings.maintenance.ConfigurationMaintenanceOnHostImpl"/>
-            <Class name="~.*TestBase"/>
-            <Class name="~io.github.mfvanek.pg.support.*"/>
-            <Class name="~.*Test"/>
+            <!-- Our Packet hierarchy intentionally uses clone() without calling super.clone(). -->
+            <Bug pattern="CN_IDIOM_NO_SUPER_CALL"/>
+            <!-- This seems to get triggered by certain kotlin constructs though they look safe -->
+            <Bug pattern="BC_BAD_CAST_TO_ABSTRACT_COLLECTION"/>
+            <!-- Serialization -->
+            <Bug pattern="SE_BAD_FIELD"/>
+            <!-- Serialization -->
+            <Bug pattern="SE_BAD_FIELD_STORE"/>
+            <!-- False positives with lazy vals -->
+            <Bug pattern="NP_NULL_ON_SOME_PATH"/>
+            <Bug pattern="RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE"/>
+            <Bug pattern="BC_IMPOSSIBLE_INSTANCEOF"/>
+            <!-- False positives with kotlin companions -->
+            <Bug pattern="NP_NONNULL_FIELD_NOT_INITIALIZED_IN_CONSTRUCTOR"/>
+            <!-- Reference exposure, our implementation deliberately uses this. -->
+            <Bug pattern="EI_EXPOSE_REP"/>
+            <Bug pattern="EI_EXPOSE_REP2"/>
         </Or>
     </Match>
+
     <Match>
-        <Bug pattern="SQL_PREPARED_STATEMENT_GENERATED_FROM_NONCONSTANT_STRING"/>
         <Or>
-            <Class name="~io.github.mfvanek.pg.support.*"/>
-            <Class name="io.github.mfvanek.pg.utils.QueryExecutorsTest"/>
+            <!-- Tests have a valid reason to ignore return values (expecting exceptions, etc). -->
+            <Bug pattern="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT"/>
+
+            <!-- False positives with kotlin 1.5 -->
+            <Bug pattern="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"/>
+            <!-- Test methods -->
+            <Bug pattern="NM_METHOD_NAMING_CONVENTION"/>
+        </Or>
+        <Or>
+            <Source name="~.*\.*Test.kt" />
+            <Source name="~.*\.*Test.java" />
         </Or>
     </Match>
-    <Match>
-        <Bug pattern="EC_NULL_ARG,EC_UNRELATED_TYPES,EC_UNRELATED_CLASS_AND_INTERFACE,NM_CONFUSING,NP_NONNULL_PARAM_VIOLATION,DP_DO_INSIDE_DO_PRIVILEGED"/>
-        <Class name="~.*Test"/>
-    </Match>
-    <Match>
-        <Bug pattern="BC_UNCONFIRMED_CAST_OF_RETURN_VALUE"/>
-        <Or>
-            <Class name="io.github.mfvanek.pg.support.PostgreSqlContainerWrapper"/>
-            <Class name="io.github.mfvanek.pg.e2e.PostgresSqlClusterWrapper"/>
-        </Or>
-    </Match>
-    <Match>
-        <Package name="com.kivilev.protobuf.generated.*"/>
-    </Match>
+
 </FindBugsFilter>

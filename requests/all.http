@@ -1,4 +1,6 @@
-### Creating drone
+############  Customers
+
+### Creating customer
 POST http://localhost:8080/api/v1/customers/
 Content-Type: application/json
 
@@ -15,3 +17,22 @@ GET http://localhost:8080/api/v1/customers/742077a7-3807-428d-a9b4-f0284b207658
 GET http://localhost:8080/api/v1/customers/
 
 
+############  Toppings
+
+### Create topping
+POST http://localhost:8080/api/v1/toppings/
+Content-Type: application/json
+
+{
+    "code": "PINEAPPLE_SPICY1",
+    "fullName": "Pineapple with spicy2"
+}
+
+### Get info about topping
+GET http://localhost:8080/api/v1/toppings/7d1f29b7-4651-40b6-8042-e8e8e2345150
+
+### Get list of toppings
+GET http://localhost:8080/api/v1/toppings/
+
+### Get list of toppings
+DELETE http://localhost:8080/api/v1/toppings/3771987e-c79b-4825-967a-6bd3d6ec9c8e

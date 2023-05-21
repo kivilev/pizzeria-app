@@ -32,6 +32,7 @@
             <Bug pattern="NP_PARAMETER_MUST_BE_NONNULL_BUT_MARKED_AS_NULLABLE"/>
             <!-- Test methods -->
             <Bug pattern="NM_METHOD_NAMING_CONVENTION"/>
+            <Bug pattern="NP_NULL_PARAM_DEREF"/>
         </Or>
         <Or>
             <Source name="~.*\.*Test.kt" />

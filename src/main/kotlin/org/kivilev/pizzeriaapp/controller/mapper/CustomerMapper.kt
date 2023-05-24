@@ -12,25 +12,22 @@ import org.springframework.stereotype.Component
 
 @Component
 class CustomerMapper {
-    fun fromDto(customerCreateRequestDto: CustomerCreateRequestDto): Customer {
-        return Customer(
+    fun fromDto(customerCreateRequestDto: CustomerCreateRequestDto): Customer =
+        Customer(
             null,
             customerCreateRequestDto.fullName,
             customerCreateRequestDto.email,
             customerCreateRequestDto.phoneNumber
         )
-    }
 
-    fun toDto(customer: Customer): CustomerResponseDto {
-        return CustomerResponseDto(
+    fun toDto(customer: Customer): CustomerResponseDto =
+        CustomerResponseDto(
             customer.id!!,
             customer.fullName,
             customer.phoneNumber,
             customer.email
         )
-    }
 
-    fun toDto(customers: List<Customer>): List<CustomerResponseDto> {
-        return customers.map { customer -> toDto(customer) }
-    }
+    fun toDto(customers: List<Customer>): List<CustomerResponseDto> =
+        customers.map { customer -> toDto(customer) }
 }

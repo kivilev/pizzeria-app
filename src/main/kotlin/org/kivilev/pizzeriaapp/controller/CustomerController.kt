@@ -29,6 +29,7 @@ class CustomerController(
 ) {
     @PostMapping("/api/v1/customers/")
     @Operation(summary = "Create a new one customer")
+    @ResponseStatus(HttpStatus.CREATED)
     fun saveCustomer(
         @io.swagger.v3.oas.annotations.parameters.RequestBody(description = "Customer properties")
         @Valid
@@ -63,6 +64,6 @@ class CustomerController(
         @org.hibernate.validator.constraints.UUID
         @PathVariable("id") customerId: UUID
     ) {
-        customerService.getAndRemoveCustomer(customerId)
+        customerService.removeCustomer(customerId)
     }
 }

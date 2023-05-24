@@ -40,7 +40,6 @@ class ToppingControllerTest {
         mockMvc.post("/api/v1/toppings/") {
             contentType = MediaType.APPLICATION_JSON
             content = OBJECT_MAPPER.writeValueAsString(dto)
-            accept = MediaType.APPLICATION_JSON
         }.andExpect {
             status { isBadRequest() }
         }
@@ -48,17 +47,16 @@ class ToppingControllerTest {
 
     @Test
     fun `Getting not existed topping should return error`() {
-        val toppingID = UUID.randomUUID()
-        `when`(toppingService.getTopping(toppingID)).thenThrow(ObjectNotFoundException::class.java)
+        val toppingId = UUID.randomUUID()
+        `when`(toppingService.getTopping(toppingId)).thenThrow(ObjectNotFoundException::class.java)
 
-        mockMvc.get("/api/v1/toppings/$toppingID")
+        mockMvc.get("/api/v1/toppings/$toppingId")
             .andExpect {
                 status { isNotFound() }
             }
     }
 
     private companion object {
-        const val VALID_CODE = "CODE_1"
         const val INVALID_CODE = "code_1"
         const val FULL_NAME = "full name"
         val OBJECT_MAPPER = ObjectMapper()

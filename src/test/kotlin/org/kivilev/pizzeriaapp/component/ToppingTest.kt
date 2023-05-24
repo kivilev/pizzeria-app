@@ -6,8 +6,9 @@ package org.kivilev.pizzeriaapp.component
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.transaction.Transactional
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.hamcrest.Matchers.hasSize
 import org.junit.jupiter.api.Test
+import org.kivilev.pizzeriaapp.controller.model.ToppingResponseDto
 import org.kivilev.pizzeriaapp.repository.ToppingRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -33,16 +34,13 @@ class ToppingTest {
     @Test
     fun `Getting all toppings should return list of toppings`() {
         val expectedSize = 2
-        val actualResponse = mockMvc.get("/api/v1/toppings/") {
+
+        mockMvc.get("/api/v1/toppings/") {
             accept = APPLICATION_JSON
         }.andExpect {
             status { isOk() }
             content { contentType(APPLICATION_JSON) }
+            jsonPath("*", hasSize<ToppingResponseDto>(expectedSize))
         }
-            .andReturn().response.contentAsString
-
-        val actualToppings = objectMapper.readValue(actualResponse, List::class.java)
-
-        assertEquals(expectedSize, actualToppings.size)
     }
 }

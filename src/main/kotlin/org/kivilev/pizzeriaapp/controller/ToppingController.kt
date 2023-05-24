@@ -64,6 +64,6 @@ class ToppingController(
         @org.hibernate.validator.constraints.UUID
         @PathVariable("id") toppingId: UUID
     ) {
-        toppingService.getAndRemoveTopping(toppingId)
+        toppingService.removeTopping(toppingId)
     }
 }

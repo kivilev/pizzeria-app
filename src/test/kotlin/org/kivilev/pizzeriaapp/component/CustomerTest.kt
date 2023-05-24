@@ -18,8 +18,8 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.delete
+import org.springframework.test.web.servlet.post
 import java.util.UUID
 
 @SpringBootTest
@@ -42,13 +42,14 @@ class CustomerTest {
         val customerCreateRequestDto =
             CustomerCreateRequestDto(fullName = FULL_NAME, phoneNumber = VALID_PHONE_NUMBER, email = VALID_EMAIL)
 
-        val actualResponse = mockMvc.perform(
-            MockMvcRequestBuilders.post("/api/v1/customers/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(customerCreateRequestDto))
-        )
-            .andExpect(MockMvcResultMatchers.status().isOk)
-            .andReturn().response.contentAsString
+        val actualResponse = mockMvc.post("/api/v1/customers/") {
+            contentType = MediaType.APPLICATION_JSON
+            content = objectMapper.writeValueAsString(customerCreateRequestDto)
+            accept = MediaType.APPLICATION_JSON
+        }.andExpect {
+            status { isCreated() }
+            content { contentType(MediaType.APPLICATION_JSON) }
+        }.andReturn().response.contentAsString
 
         val actualCustomerDto = objectMapper.readValue(actualResponse, CustomerResponseDto::class.java)
         val actualCustomerId = actualCustomerDto.id
@@ -73,11 +74,10 @@ class CustomerTest {
     fun `Deleting not existed customer should get error`() {
         val customerId = UUID.randomUUID()
 
-        val actualErrorMessage = mockMvc.perform(
-            MockMvcRequestBuilders.delete("/api/v1/customers/$customerId")
-        )
-            .andExpect(MockMvcResultMatchers.status().isNotFound)
-            .andReturn().response.errorMessage
+        val actualErrorMessage = mockMvc.delete("/api/v1/customers/$customerId")
+            .andExpect {
+                status { isNotFound() }
+            }.andReturn().response.errorMessage
 
         assertEquals(OBJECT_NOT_FOUND_MESSAGE, actualErrorMessage)
     }

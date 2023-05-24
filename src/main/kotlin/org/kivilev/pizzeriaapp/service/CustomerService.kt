@@ -20,7 +20,7 @@ class CustomerService(private val customerRepository: CustomerRepository) {
     }
 
     @Transactional
-    fun getAndRemoveCustomer(customerId: UUID) {
+    fun removeCustomer(customerId: UUID) {
         val customer = customerRepository.findById(customerId)
             .orElseThrow { ObjectNotFoundException("Customer with $customerId not found") }
         customerRepository.delete(customer)

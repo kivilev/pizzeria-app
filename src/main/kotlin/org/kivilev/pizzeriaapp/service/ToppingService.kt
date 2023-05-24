@@ -20,7 +20,7 @@ class ToppingService(private val toppingRepository: ToppingRepository) {
     }
 
     @Transactional
-    fun getAndRemoveTopping(toppingId: UUID) {
+    fun removeTopping(toppingId: UUID) {
         val topping = toppingRepository.findById(toppingId)
             .orElseThrow { ObjectNotFoundException("Topping with $toppingId not found") }
         toppingRepository.delete(topping)

@@ -26,6 +26,4 @@ class Topping(
 
     @Column(name = "full_name", nullable = false)
     val fullName: String
-) {
-    constructor() : this(null, "", "")
-}
+)

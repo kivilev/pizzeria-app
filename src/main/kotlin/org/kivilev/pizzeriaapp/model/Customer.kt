@@ -29,6 +29,4 @@ class Customer(
 
     @Column(name = "email")
     var email: String? = null
-) {
-    constructor() : this(null, "", null, null)
-}
+)

@@ -17,8 +17,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers
+import org.springframework.test.web.servlet.post
 
 @WebMvcTest(CustomerController::class)
 class CustomerControllerTest {
@@ -36,13 +35,12 @@ class CustomerControllerTest {
     fun `Creating customer with invalid email should get error`() {
         val dto = CustomerCreateRequestDto(FULL_NAME, VALID_PHONE_NUMBER, INVALID_EMAIL)
 
-        val actualErrorMessage = mockMvc.perform(
-            MockMvcRequestBuilders.post("/api/v1/customers/")
-                .contentType(MediaType.APPLICATION_JSON)
-                .content(OBJECT_MAPPER.writeValueAsString(dto))
-        )
-            .andExpect(MockMvcResultMatchers.status().isBadRequest)
-            .andReturn().response.errorMessage
+        val actualErrorMessage = mockMvc.post("/api/v1/customers/") {
+            contentType = MediaType.APPLICATION_JSON
+            content = OBJECT_MAPPER.writeValueAsString(dto)
+        }.andExpect {
+            status { isBadRequest() }
+        }.andReturn().response.errorMessage
 
         assertNotNull(actualErrorMessage)
         assertEquals("Invalid request content.", actualErrorMessage)

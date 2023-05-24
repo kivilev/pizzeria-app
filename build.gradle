@@ -7,6 +7,8 @@ plugins {
     id 'io.spring.dependency-management' version '1.1.0'
     id 'org.jetbrains.kotlin.jvm' version '1.8.21'
     id 'org.jetbrains.kotlin.plugin.spring' version '1.8.21'
+    id 'org.jetbrains.kotlin.plugin.jpa' version '1.8.21'
+    id "org.jetbrains.kotlin.plugin.allopen" version "1.8.21"
 }
 
 group = 'org.kivilev'
@@ -131,4 +133,8 @@ tasks.register("ktlintFormat", JavaExec) {
     jvmArgs "--add-opens=java.base/java.lang=ALL-UNNAMED"
     // see https://pinterest.github.io/ktlint/install/cli/#command-line-usage for more information
     args "-F", "src/**/*.kt",  "**.kts", "!**/build/**"
+}
+
+allOpen {
+    annotations("javax.persistence.Entity", "javax.persistence.MappedSuperclass", "javax.persistence.Embedabble")
 }

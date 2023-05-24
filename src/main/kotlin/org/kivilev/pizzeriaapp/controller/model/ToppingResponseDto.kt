@@ -8,7 +8,7 @@ package org.kivilev.pizzeriaapp.controller.model
 import io.swagger.v3.oas.annotations.media.Schema
 import java.util.UUID
 
-class ToppingResponseDto(
+data class ToppingResponseDto(
     @field:Schema(description = "Topping Id", required = true)
     val id: UUID,
     @field:Schema(description = "Unique code", required = true)

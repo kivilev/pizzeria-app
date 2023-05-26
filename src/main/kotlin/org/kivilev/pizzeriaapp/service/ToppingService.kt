@@ -34,4 +34,7 @@ class ToppingService(private val toppingRepository: ToppingRepository) {
         return toppingRepository.findById(toppingId)
             .orElseThrow { ObjectNotFoundException("Topping with $toppingId not found") }
     }
+
+    fun findToppingsByIds(toppingIds: Set<UUID>): List<Topping> =
+        toppingRepository.findToppingsByIdIn(toppingIds)
 }

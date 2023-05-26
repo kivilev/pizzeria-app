@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository
 import java.util.UUID
 
 @Repository
-interface ToppingRepository : JpaRepository<Topping, UUID>
+interface ToppingRepository : JpaRepository<Topping, UUID> {
+    fun findToppingsByIdIn(toppingIds: Set<UUID>): List<Topping>
+}

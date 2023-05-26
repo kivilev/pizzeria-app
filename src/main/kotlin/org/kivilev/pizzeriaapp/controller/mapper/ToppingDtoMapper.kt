@@ -11,7 +11,7 @@ import org.kivilev.pizzeriaapp.model.Topping
 import org.springframework.stereotype.Component
 
 @Component
-class ToppingMapper {
+class ToppingDtoMapper {
     fun fromDto(toppingCreateRequestDto: ToppingCreateRequestDto): Topping =
         Topping(null, toppingCreateRequestDto.code, toppingCreateRequestDto.fullName)
 

@@ -8,7 +8,7 @@ package org.kivilev.pizzeriaapp.controller
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import jakarta.validation.Valid
-import org.kivilev.pizzeriaapp.controller.mapper.CustomerMapper
+import org.kivilev.pizzeriaapp.controller.mapper.CustomerDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.CustomerCreateRequestDto
 import org.kivilev.pizzeriaapp.controller.model.CustomerResponseDto
 import org.kivilev.pizzeriaapp.service.CustomerService
@@ -25,7 +25,7 @@ import java.util.UUID
 @RestController
 class CustomerController(
     private val customerService: CustomerService,
-    private val customerMapper: CustomerMapper
+    private val customerDtoMapper: CustomerDtoMapper
 ) {
     @PostMapping("/api/v1/customers/")
     @Operation(summary = "Create a new one customer")
@@ -35,15 +35,15 @@ class CustomerController(
         @Valid
         @RequestBody customerCreateRequestDto: CustomerCreateRequestDto
     ): CustomerResponseDto {
-        val newCustomer = customerMapper.fromDto(customerCreateRequestDto)
-        return customerMapper.toDto(customerService.addCustomer(newCustomer))
+        val newCustomer = customerDtoMapper.fromDto(customerCreateRequestDto)
+        return customerDtoMapper.toDto(customerService.addCustomer(newCustomer))
     }
 
     @GetMapping("/api/v1/customers/")
     @Operation(summary = "Get list of customers")
     fun getCustomers(): List<CustomerResponseDto> {
         // TODO: add pagination
-        return customerMapper.toDto(customerService.getCustomers())
+        return customerDtoMapper.toDto(customerService.getCustomers())
     }
 
     @GetMapping("/api/v1/customers/{id}")
@@ -53,7 +53,7 @@ class CustomerController(
         @org.hibernate.validator.constraints.UUID
         @PathVariable("id") customerId: UUID
     ): CustomerResponseDto {
-        return customerMapper.toDto(customerService.getCustomer(customerId))
+        return customerDtoMapper.toDto(customerService.getCustomer(customerId))
     }
 
     @DeleteMapping("/api/v1/customers/{id}")

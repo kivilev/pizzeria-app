@@ -24,8 +24,8 @@ POST http://localhost:8080/api/v1/toppings/
 Content-Type: application/json
 
 {
-    "code": "PINEAPPLE_SPICY1",
-    "fullName": "Pineapple with spicy2"
+    "code": "PINEAPPLE_SPICY123",
+    "fullName": "Pineapple with spicy32222"
 }
 
 ### Get info about topping
@@ -36,3 +36,46 @@ GET http://localhost:8080/api/v1/toppings/
 
 ### Get list of toppings
 DELETE http://localhost:8080/api/v1/toppings/3771987e-c79b-4825-967a-6bd3d6ec9c8e
+
+
+###--------------- Orders
+
+### Create order
+POST http://localhost:8080/api/v1/orders/
+Content-Type: application/json
+
+{
+    "customerId": "f92214b4-f8c4-4161-b2fc-64dd2aa4c9cb",
+    "email": "email@email.com",
+    "toppings": [
+        "7d1f29b7-4651-40b6-8042-e8e8e2345150",
+        "a3ed36b3-2acf-47f6-afbf-76eb479666e2",
+        "0d373cec-4f8d-45e3-a84f-e1b7d0ef70b7"
+    ]
+}
+
+### Get order
+GET http://localhost:8080/api/v1/orders/c545b9fa-9455-4c7d-b4a8-8adde4bb989c
+
+### Get customer orders
+GET http://localhost:8080/api/v1/customers/f92214b4-f8c4-4161-b2fc-64dd2aa4c9cb/orders/?state=CREATED&state=DELIVERED
+
+### Change state
+PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7/
+Content-Type: application/json
+
+{
+    "state": "DELIVERED"
+}
+
+### Change email
+PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7/
+Content-Type: application/json
+
+{
+    "email": "some@some.com"
+}
+
+### Soft delete order
+DELETE http://localhost:8080/api/v1/orders/4d43eddb-1ec2-4360-a4a2-0c4bbb64d886/
+

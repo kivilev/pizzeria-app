@@ -7,7 +7,7 @@ package org.kivilev.pizzeriaapp.controller
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Test
-import org.kivilev.pizzeriaapp.controller.mapper.ToppingMapper
+import org.kivilev.pizzeriaapp.controller.mapper.ToppingDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.ToppingCreateRequestDto
 import org.kivilev.pizzeriaapp.exception.ObjectNotFoundException
 import org.kivilev.pizzeriaapp.service.ToppingService
@@ -28,7 +28,7 @@ class ToppingControllerTest {
     private lateinit var toppingService: ToppingService
 
     @MockBean
-    private lateinit var toppingMapper: ToppingMapper
+    private lateinit var toppingDtoMapper: ToppingDtoMapper
 
     @Autowired
     private lateinit var mockMvc: MockMvc

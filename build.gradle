@@ -69,6 +69,7 @@ dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-reflect'
     annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
     implementation 'org.postgresql:postgresql:42.6.0'
+    implementation 'io.hypersistence:hypersistence-utils-hibernate-62:3.3.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'com.github.spotbugs:spotbugs-annotations:4.7.3'

@@ -8,7 +8,7 @@ package org.kivilev.pizzeriaapp.controller
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
 import jakarta.validation.Valid
-import org.kivilev.pizzeriaapp.controller.mapper.ToppingMapper
+import org.kivilev.pizzeriaapp.controller.mapper.ToppingDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.ToppingCreateRequestDto
 import org.kivilev.pizzeriaapp.controller.model.ToppingResponseDto
 import org.kivilev.pizzeriaapp.service.ToppingService
@@ -25,7 +25,7 @@ import java.util.UUID
 @RestController
 class ToppingController(
     private val toppingService: ToppingService,
-    private val toppingMapper: ToppingMapper
+    private val toppingDtoMapper: ToppingDtoMapper
 ) {
     @PostMapping("/api/v1/toppings/")
     @Operation(summary = "Create a new one topping")
@@ -35,15 +35,15 @@ class ToppingController(
         @Valid
         @RequestBody toppingCreateRequestDto: ToppingCreateRequestDto
     ): ToppingResponseDto {
-        val newTopping = toppingMapper.fromDto(toppingCreateRequestDto)
-        return toppingMapper.toDto(toppingService.addTopping(newTopping))
+        val newTopping = toppingDtoMapper.fromDto(toppingCreateRequestDto)
+        return toppingDtoMapper.toDto(toppingService.addTopping(newTopping))
     }
 
     @GetMapping("/api/v1/toppings/")
     @Operation(summary = "Get list of toppings")
     fun getToppings(): List<ToppingResponseDto> {
         // TODO: add pagination
-        return toppingMapper.toDto(toppingService.getToppings())
+        return toppingDtoMapper.toDto(toppingService.getToppings())
     }
 
     @GetMapping("/api/v1/toppings/{id}")
@@ -53,7 +53,7 @@ class ToppingController(
         @org.hibernate.validator.constraints.UUID
         @PathVariable("id") toppingId: UUID
     ): ToppingResponseDto {
-        return toppingMapper.toDto(toppingService.getTopping(toppingId))
+        return toppingDtoMapper.toDto(toppingService.getTopping(toppingId))
     }
 
     @DeleteMapping("/api/v1/toppings/{id}")

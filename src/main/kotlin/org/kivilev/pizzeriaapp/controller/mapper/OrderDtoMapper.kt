@@ -12,7 +12,7 @@ import org.kivilev.pizzeriaapp.model.OrderState
 import org.springframework.stereotype.Component
 
 @Component
-class OrderDtoMapper(private val toppingMapper: ToppingMapper) {
+class OrderDtoMapper(private val toppingDtoMapper: ToppingDtoMapper) {
     fun toDto(order: Order): OrderResponseDto =
         with(order) {
             OrderResponseDto(
@@ -21,7 +21,7 @@ class OrderDtoMapper(private val toppingMapper: ToppingMapper) {
                 email,
                 createdDateTime,
                 customer.id!!,
-                toppingMapper.toDto(toppings)
+                toppingDtoMapper.toDto(toppings)
             )
         }
 

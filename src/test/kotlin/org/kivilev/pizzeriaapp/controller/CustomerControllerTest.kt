@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
-import org.kivilev.pizzeriaapp.controller.mapper.CustomerMapper
+import org.kivilev.pizzeriaapp.controller.mapper.CustomerDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.CustomerCreateRequestDto
 import org.kivilev.pizzeriaapp.service.CustomerService
 import org.springframework.beans.factory.annotation.Autowired
@@ -26,7 +26,7 @@ class CustomerControllerTest {
     private lateinit var customerService: CustomerService
 
     @MockBean
-    private lateinit var customerMapper: CustomerMapper
+    private lateinit var customerDtoMapper: CustomerDtoMapper
 
     @Autowired
     private lateinit var mockMvc: MockMvc

@@ -11,7 +11,7 @@ import org.kivilev.pizzeriaapp.model.Customer
 import org.springframework.stereotype.Component
 
 @Component
-class CustomerMapper {
+class CustomerDtoMapper {
     fun fromDto(customerCreateRequestDto: CustomerCreateRequestDto): Customer =
         Customer(
             null,

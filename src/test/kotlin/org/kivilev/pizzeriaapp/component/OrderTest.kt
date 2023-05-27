@@ -39,7 +39,7 @@ class OrderTest : ComponentTestBase() {
             setOf(UUID.fromString(TOPPING_ID1), UUID.fromString(TOPPING_ID2))
         )
 
-        val actualResponse = mockMvc.post("/api/v1/orders/") {
+        val actualResponse = mockMvc.post("/api/v1/orders") {
             contentType = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(orderCreateRequestDto)
             accept = MediaType.APPLICATION_JSON
@@ -84,7 +84,7 @@ class OrderTest : ComponentTestBase() {
             setOf(UUID.fromString(TOPPING_ID1))
         )
 
-        val actualResponse = mockMvc.post("/api/v1/orders/") {
+        val actualResponse = mockMvc.post("/api/v1/orders") {
             contentType = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(secondOrderCreateRequestDto)
             accept = MediaType.APPLICATION_JSON

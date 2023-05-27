@@ -11,7 +11,7 @@ import jakarta.validation.constraints.Email
 data class OrderChangeRequestDto(
     @field:Email
     @field:Schema(description = "Order email", required = false, example = "email@email.com")
-    var email: String?,
+    val email: String?,
     @field:Schema(description = "Order state", required = false, example = "DELIVERING")
     val state: OrderStateDto?
 )

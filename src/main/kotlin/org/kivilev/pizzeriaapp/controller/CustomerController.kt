@@ -7,6 +7,7 @@ package org.kivilev.pizzeriaapp.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.kivilev.pizzeriaapp.controller.mapper.CustomerDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.CustomerCreateRequestDto
@@ -23,11 +24,12 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
+@Tag(name = "customer", description = "the Customer API")
 class CustomerController(
     private val customerService: CustomerService,
     private val customerDtoMapper: CustomerDtoMapper
 ) {
-    @PostMapping("/api/v1/customers/")
+    @PostMapping("/api/v1/customers")
     @Operation(summary = "Create a new one customer")
     @ResponseStatus(HttpStatus.CREATED)
     fun saveCustomer(
@@ -39,7 +41,7 @@ class CustomerController(
         return customerDtoMapper.toDto(customerService.addCustomer(newCustomer))
     }
 
-    @GetMapping("/api/v1/customers/")
+    @GetMapping("/api/v1/customers")
     @Operation(summary = "Get list of customers")
     fun getCustomers(): List<CustomerResponseDto> {
         // TODO: add pagination

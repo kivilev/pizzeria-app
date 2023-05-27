@@ -18,7 +18,7 @@ class ToppingTest : ComponentTestBase() {
     fun `Getting all toppings should return list of toppings`() {
         val expectedSize = 2
 
-        mockMvc.get("/api/v1/toppings/") {
+        mockMvc.get("/api/v1/toppings") {
             accept = APPLICATION_JSON
         }.andExpect {
             status { isOk() }

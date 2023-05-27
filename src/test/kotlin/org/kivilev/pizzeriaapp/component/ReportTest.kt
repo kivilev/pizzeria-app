@@ -24,7 +24,7 @@ class ReportTest : ComponentTestBase() {
         createOrder(state = OrderState.CREATED, toppings = listOf(toppings[0]))
         createOrder(state = OrderState.DELIVERED, toppings = listOf(toppings[0]))
 
-        mockMvc.get("/api/v1/reports/?type=TOPPINGS_UNIQUE_CUSTOMERS_REPORT") {
+        mockMvc.get("/api/v1/reports?type=TOPPINGS_UNIQUE_CUSTOMERS_REPORT") {
             accept = MediaType.APPLICATION_JSON
         }.andExpect {
             status { isOk() }

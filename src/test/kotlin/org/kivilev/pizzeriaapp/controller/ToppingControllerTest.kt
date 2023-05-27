@@ -37,7 +37,7 @@ class ToppingControllerTest {
     fun `Creating topping with invalid code should return error`() {
         val dto = ToppingCreateRequestDto(INVALID_CODE, FULL_NAME)
 
-        mockMvc.post("/api/v1/toppings/") {
+        mockMvc.post("/api/v1/toppings") {
             contentType = MediaType.APPLICATION_JSON
             content = OBJECT_MAPPER.writeValueAsString(dto)
         }.andExpect {

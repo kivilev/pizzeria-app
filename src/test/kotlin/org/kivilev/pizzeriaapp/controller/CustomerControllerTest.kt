@@ -35,7 +35,7 @@ class CustomerControllerTest {
     fun `Creating customer with invalid email should get error`() {
         val dto = CustomerCreateRequestDto(FULL_NAME, VALID_PHONE_NUMBER, INVALID_EMAIL)
 
-        val actualErrorMessage = mockMvc.post("/api/v1/customers/") {
+        val actualErrorMessage = mockMvc.post("/api/v1/customers") {
             contentType = MediaType.APPLICATION_JSON
             content = OBJECT_MAPPER.writeValueAsString(dto)
         }.andExpect {

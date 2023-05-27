@@ -7,6 +7,7 @@ package org.kivilev.pizzeriaapp.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.kivilev.pizzeriaapp.controller.mapper.ToppingDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.ToppingCreateRequestDto
@@ -23,11 +24,12 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
+@Tag(name = "topping", description = "the Topping API")
 class ToppingController(
     private val toppingService: ToppingService,
     private val toppingDtoMapper: ToppingDtoMapper
 ) {
-    @PostMapping("/api/v1/toppings/")
+    @PostMapping("/api/v1/toppings")
     @Operation(summary = "Create a new one topping")
     @ResponseStatus(HttpStatus.CREATED)
     fun saveTopping(
@@ -39,7 +41,7 @@ class ToppingController(
         return toppingDtoMapper.toDto(toppingService.addTopping(newTopping))
     }
 
-    @GetMapping("/api/v1/toppings/")
+    @GetMapping("/api/v1/toppings")
     @Operation(summary = "Get list of toppings")
     fun getToppings(): List<ToppingResponseDto> {
         // TODO: add pagination

@@ -1,7 +1,7 @@
 ############  Customers
 
 ### Creating customer
-POST http://localhost:8080/api/v1/customers/
+POST http://localhost:8080/api/v1/customers
 Content-Type: application/json
 
 {
@@ -14,7 +14,7 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/customers/742077a7-3807-428d-a9b4-f0284b207658
 
 ### Get list of customers
-GET http://localhost:8080/api/v1/customers/
+GET http://localhost:8080/api/v1/customers
 
 
 ############  Toppings
@@ -32,7 +32,7 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/toppings/7d1f29b7-4651-40b6-8042-e8e8e2345150
 
 ### Get list of toppings
-GET http://localhost:8080/api/v1/toppings/
+GET http://localhost:8080/api/v1/toppings
 
 ### Get list of toppings
 DELETE http://localhost:8080/api/v1/toppings/3771987e-c79b-4825-967a-6bd3d6ec9c8e
@@ -41,7 +41,7 @@ DELETE http://localhost:8080/api/v1/toppings/3771987e-c79b-4825-967a-6bd3d6ec9c8
 ###--------------- Orders
 
 ### Create order
-POST http://localhost:8080/api/v1/orders/
+POST http://localhost:8080/api/v1/orders
 Content-Type: application/json
 
 {
@@ -58,10 +58,10 @@ Content-Type: application/json
 GET http://localhost:8080/api/v1/orders/c545b9fa-9455-4c7d-b4a8-8adde4bb989c
 
 ### Get customer orders
-GET http://localhost:8080/api/v1/customers/f92214b4-f8c4-4161-b2fc-64dd2aa4c9cb/orders/?state=CREATED&state=DELIVERED
+GET http://localhost:8080/api/v1/customers/f92214b4-f8c4-4161-b2fc-64dd2aa4c9cb/orders?state=CREATED&state=DELIVERED
 
 ### Change state
-PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7/
+PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7
 Content-Type: application/json
 
 {
@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 
 ### Change email
-PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7/
+PATCH http://localhost:8080/api/v1/orders/71e9ca56-1a36-4e65-a98e-1cee2055ace7
 Content-Type: application/json
 
 {
@@ -77,7 +77,7 @@ Content-Type: application/json
 }
 
 ### Soft delete order
-DELETE http://localhost:8080/api/v1/orders/4d43eddb-1ec2-4360-a4a2-0c4bbb64d886/
+DELETE http://localhost:8080/api/v1/orders/4d43eddb-1ec2-4360-a4a2-0c4bbb64d886
 
 ### Report
-GET http://localhost:8080/api/v1/reports/?type=123
+GET http://localhost:8080/api/v1/reports?type=TOPPINGS_UNIQUE_CUSTOMERS_REPORT

@@ -24,7 +24,7 @@ class ReportControllerTest {
 
     @Test
     fun `Getting not existed report should return error`() {
-        mockMvc.get("/api/v1/reports/?type=DUMMY_REPORT")
+        mockMvc.get("/api/v1/reports?type=DUMMY_REPORT")
             .andExpect {
                 status { isBadRequest() }
             }

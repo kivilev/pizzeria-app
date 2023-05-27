@@ -11,10 +11,10 @@ import jakarta.validation.constraints.Pattern
 
 data class ToppingCreateRequestDto(
     @field:Pattern(regexp = "^[A-Z0-9_]+\$")
-    @field:Schema(description = "Unique code", required = true, pattern = "^[A-Z0-9_]+\$")
-    var code: String,
+    @field:Schema(description = "Unique code", required = true, pattern = "^[A-Z0-9_]+\$", example = "CODE_TOPPING_1")
+    val code: String,
 
     @field:NotBlank
-    @field:Schema(description = "Full name", required = true)
-    var fullName: String
+    @field:Schema(description = "Full name", required = true, example = "Topping full name")
+    val fullName: String
 )

@@ -24,7 +24,7 @@ class CustomerTest : ComponentTestBase() {
         val customerCreateRequestDto =
             CustomerCreateRequestDto(fullName = FULL_NAME, phoneNumber = VALID_PHONE_NUMBER, email = VALID_EMAIL)
 
-        val actualResponse = mockMvc.post("/api/v1/customers/") {
+        val actualResponse = mockMvc.post("/api/v1/customers") {
             contentType = MediaType.APPLICATION_JSON
             content = objectMapper.writeValueAsString(customerCreateRequestDto)
             accept = MediaType.APPLICATION_JSON

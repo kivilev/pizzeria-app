@@ -7,6 +7,7 @@ package org.kivilev.pizzeriaapp.controller
 
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.Parameter
+import io.swagger.v3.oas.annotations.tags.Tag
 import jakarta.validation.Valid
 import org.kivilev.pizzeriaapp.controller.mapper.OrderDtoMapper
 import org.kivilev.pizzeriaapp.controller.model.OrderChangeRequestDto
@@ -27,11 +28,12 @@ import org.springframework.web.bind.annotation.RestController
 import java.util.UUID
 
 @RestController
+@Tag(name = "order", description = "the Order API")
 class OrderController(
     private val orderService: OrderService,
     private val orderDtoMapper: OrderDtoMapper
 ) {
-    @PostMapping("/api/v1/orders/")
+    @PostMapping("/api/v1/orders")
     @Operation(summary = "Create a new order")
     @ResponseStatus(HttpStatus.CREATED)
     fun addOrder(
@@ -42,7 +44,7 @@ class OrderController(
         return orderDtoMapper.toDto(orderService.addOrder(orderCreateRequestDto.customerId, orderCreateRequestDto.email, orderCreateRequestDto.toppings))
     }
 
-    @PatchMapping("/api/v1/orders/{id}/")
+    @PatchMapping("/api/v1/orders/{id}")
     @Operation(summary = "Change order properties")
     fun changeOrder(
         @Parameter(description = "Order UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
@@ -76,7 +78,7 @@ class OrderController(
         return orderDtoMapper.toDto(orderService.getOrder(orderId))
     }
 
-    @GetMapping("/api/v1/customers/{id}/orders/")
+    @GetMapping("/api/v1/customers/{id}/orders")
     @Operation(summary = "Get customer orders")
     fun getOrdersByCustomer(
         @Parameter(description = "Customer UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")

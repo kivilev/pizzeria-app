@@ -11,13 +11,13 @@ import jakarta.validation.constraints.NotBlank
 
 data class CustomerCreateRequestDto(
     @field:NotBlank
-    @field:Schema(description = "Full name", required = true)
-    var fullName: String,
+    @field:Schema(description = "Full name", required = true, example = "Customer full name")
+    val fullName: String,
 
-    @field:Schema(description = "Phone number")
-    var phoneNumber: String?,
+    @field:Schema(description = "Phone number", example = "+1-222-333-2222")
+    val phoneNumber: String?,
 
     @field:Email
-    @field:Schema(description = "Email")
-    var email: String?
+    @field:Schema(description = "Email", example = "email@email.com")
+    val email: String?
 )

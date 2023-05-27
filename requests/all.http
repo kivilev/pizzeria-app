@@ -5,9 +5,9 @@ POST http://localhost:8080/api/v1/customers/
 Content-Type: application/json
 
 {
-    "fullName": "Naaaammmeee fuuulll",
+    "fullName": "Naaaammmeee fuuul222ll",
     "phoneNumber": "+1-000-222-2222",
-    "email": "com@com.com"
+    "email": "com@com.222com"
 }
 
 ### Getting info about customer
@@ -24,8 +24,8 @@ POST http://localhost:8080/api/v1/toppings/
 Content-Type: application/json
 
 {
-    "code": "PINEAPPLE_SPICY123",
-    "fullName": "Pineapple with spicy32222"
+    "code": "PINEAPPLE_SPICY1232",
+    "fullName": "Pineapple with spicy322222"
 }
 
 ### Get info about topping
@@ -45,12 +45,12 @@ POST http://localhost:8080/api/v1/orders/
 Content-Type: application/json
 
 {
-    "customerId": "f92214b4-f8c4-4161-b2fc-64dd2aa4c9cb",
+    "customerId": "1ac4867a-9efb-4e6a-abc8-e6a0daf104f0",
     "email": "email@email.com",
     "toppings": [
         "7d1f29b7-4651-40b6-8042-e8e8e2345150",
         "a3ed36b3-2acf-47f6-afbf-76eb479666e2",
-        "0d373cec-4f8d-45e3-a84f-e1b7d0ef70b7"
+        "f4d1bfad-520f-43b4-aeb1-3d49082fcb68"
     ]
 }
 
@@ -79,3 +79,5 @@ Content-Type: application/json
 ### Soft delete order
 DELETE http://localhost:8080/api/v1/orders/4d43eddb-1ec2-4360-a4a2-0c4bbb64d886/
 
+### Report
+GET http://localhost:8080/api/v1/reports/?type=123

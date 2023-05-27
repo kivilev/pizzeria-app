@@ -4,48 +4,19 @@
  */
 package org.kivilev.pizzeriaapp.component
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.transaction.Transactional
 import org.junit.jupiter.api.Test
 import org.kivilev.pizzeriaapp.model.Customer
 import org.kivilev.pizzeriaapp.model.Order
 import org.kivilev.pizzeriaapp.model.OrderState
 import org.kivilev.pizzeriaapp.model.Topping
-import org.kivilev.pizzeriaapp.repository.CustomerRepository
-import org.kivilev.pizzeriaapp.repository.OrderRepository
-import org.kivilev.pizzeriaapp.repository.ToppingRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.get
-import java.time.Clock
 import java.time.ZonedDateTime
 
-@SpringBootTest
-@AutoConfigureMockMvc
 @Transactional
-class ReportTest {
+class ReportTest : ComponentTestBase() {
     // TODO: Add other tests
-    @Autowired
-    private lateinit var mockMvc: MockMvc
-
-    @Autowired
-    private lateinit var orderRepository: OrderRepository
-
-    @Autowired
-    private lateinit var customerRepository: CustomerRepository
-
-    @Autowired
-    private lateinit var toppingRepository: ToppingRepository
-
-    @Autowired
-    private lateinit var objectMapper: ObjectMapper
-
-    @Autowired
-    private lateinit var clock: Clock
-
     @Test
     fun `Getting toppings unique customers report should return correct results`() {
         val toppings = getToppings()

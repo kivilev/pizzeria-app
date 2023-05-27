@@ -34,18 +34,18 @@ Technical stack: Kotlin, Spring Boot 3 (MVC, Data JPA, Validation, etc.), Postgr
 Key entities: Customer, Topping, Order.
 Postgresql enum type was used for a field type (order_state).
 
-<img height="382" src="er-diagram.png" width="450"/>
+<img src="er-diagram.png" />
 
 ### RestApi documentation
 
 Swagger documentation is available here: http://address:port/swagger-ui/index.html
 
-<img height="382" src="rest-api.png" width="350"/>
-<img height="390" src="rest-api-schemas.png" width="450"/>
+<img src="rest-api.png"/>
+<img src="rest-api-schemas.png"/>
 
 ### Usage of application
 
-It’s really handy to use docker-compose to build the application with the database and pgAdmin.
+It’s really handy to use docker-compose to build the application with the database and pgAdmin.  
 _Note: You need JRE 17 for buildJar._
 
 ```bash

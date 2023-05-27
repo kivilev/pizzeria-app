@@ -5,7 +5,6 @@
 
 package org.kivilev.pizzeriaapp.component
 
-import com.fasterxml.jackson.databind.ObjectMapper
 import jakarta.transaction.Transactional
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertTrue
@@ -17,40 +16,15 @@ import org.kivilev.pizzeriaapp.model.Customer
 import org.kivilev.pizzeriaapp.model.Order
 import org.kivilev.pizzeriaapp.model.OrderState
 import org.kivilev.pizzeriaapp.model.Topping
-import org.kivilev.pizzeriaapp.repository.CustomerRepository
-import org.kivilev.pizzeriaapp.repository.OrderRepository
-import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
-import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
-import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.post
-import java.time.Clock
 import java.time.ZonedDateTime
 import java.util.UUID
 
-@SpringBootTest
-@AutoConfigureMockMvc
 @Transactional
-class OrderTest {
+class OrderTest : ComponentTestBase() {
     // TODO: Add other tests
-
-    @Autowired
-    private lateinit var mockMvc: MockMvc
-
-    @Autowired
-    private lateinit var orderRepository: OrderRepository
-
-    @Autowired
-    private lateinit var customerRepository: CustomerRepository
-
-    @Autowired
-    private lateinit var objectMapper: ObjectMapper
-
-    @Autowired
-    private lateinit var clock: Clock
-
     @Test
     fun `Creating order with valid properties should create order`() {
         val customer = createCustomer()

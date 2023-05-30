@@ -56,7 +56,6 @@ configurations {
 dependencyManagement {
     imports {
         mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
-        mavenBom "org.springframework.boot:spring-boot-dependencies:${springBootVersion}"
     }
 }
 

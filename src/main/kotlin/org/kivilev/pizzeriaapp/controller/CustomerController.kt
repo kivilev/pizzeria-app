@@ -51,8 +51,7 @@ class CustomerController(
     @GetMapping("/api/v1/customers/{id}")
     @Operation(summary = "Get a customer info")
     fun getCustomer(
-        @Parameter(description = "Customer UUID")
-        @org.hibernate.validator.constraints.UUID
+        @Parameter(description = "Customer UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
         @PathVariable("id") customerId: UUID
     ): CustomerResponseDto {
         return customerDtoMapper.toDto(customerService.getCustomer(customerId))
@@ -62,8 +61,7 @@ class CustomerController(
     @Operation(summary = "Delete a customer")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteCustomer(
-        @Parameter(description = "Customer UUID")
-        @org.hibernate.validator.constraints.UUID
+        @Parameter(description = "Customer UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
         @PathVariable("id") customerId: UUID
     ) {
         customerService.removeCustomer(customerId)

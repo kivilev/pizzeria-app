@@ -8,6 +8,7 @@ package org.kivilev.pizzeriaapp.controller.model
 import io.swagger.v3.oas.annotations.media.Schema
 import java.util.UUID
 
+@Schema(description = "Customer properties in response")
 data class CustomerResponseDto(
     @field:Schema(description = "Customer Id", required = true, example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
     val id: UUID,

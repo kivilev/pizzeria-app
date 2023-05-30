@@ -52,7 +52,6 @@ class ToppingController(
     @Operation(summary = "Get a topping info")
     fun getTopping(
         @Parameter(description = "Topping UUID")
-        @org.hibernate.validator.constraints.UUID
         @PathVariable("id") toppingId: UUID
     ): ToppingResponseDto {
         return toppingDtoMapper.toDto(toppingService.getTopping(toppingId))
@@ -63,7 +62,6 @@ class ToppingController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun deleteTopping(
         @Parameter(description = "Topping UUID")
-        @org.hibernate.validator.constraints.UUID
         @PathVariable("id") toppingId: UUID
     ) {
         toppingService.removeTopping(toppingId)

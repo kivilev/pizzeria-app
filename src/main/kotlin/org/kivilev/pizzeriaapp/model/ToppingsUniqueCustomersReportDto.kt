@@ -6,7 +6,7 @@ package org.kivilev.pizzeriaapp.model
 
 import java.util.UUID
 
-interface ToppingsUniqueCustomersReport {
+interface ToppingsUniqueCustomersReportDto {
     val id: UUID
     val code: String
     val fullName: String

@@ -68,10 +68,7 @@ class OrderService(
             isChanged = true
         }
 
-        return if (isChanged)
-            orderRepository.save(order)
-        else
-            order
+        return if (isChanged) orderRepository.save(order) else order
     }
 
     @Transactional

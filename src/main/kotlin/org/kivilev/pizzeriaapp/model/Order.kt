@@ -31,12 +31,12 @@ class Order(
     @Column(name = "id", nullable = false)
     var id: UUID? = null,
 
-    @field:Enumerated(EnumType.STRING)
-    @field:Type(PostgreSQLEnumType::class)
-    @field:Column(name = "state", nullable = true)
+    @Enumerated(EnumType.STRING)
+    @Type(PostgreSQLEnumType::class)
+    @Column(name = "state", nullable = true)
     var state: OrderState = OrderState.CREATED,
 
-    @Column(name = "email", nullable = false)
+    @Column(name = "email", nullable = false, length = 100)
     var email: String,
 
     @Column(name = "created_dtime", nullable = false)

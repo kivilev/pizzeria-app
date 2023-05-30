@@ -62,7 +62,6 @@ class OrderController(
     @ResponseStatus(HttpStatus.NO_CONTENT)
     fun cancelTopping(
         @Parameter(description = "Order UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
-        @org.hibernate.validator.constraints.UUID
         @PathVariable("id") orderId: UUID
     ) {
         orderService.cancelOrder(orderId)
@@ -72,7 +71,6 @@ class OrderController(
     @Operation(summary = "Get an order info")
     fun getOrder(
         @Parameter(description = "Order UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
-        @org.hibernate.validator.constraints.UUID
         @PathVariable("id") orderId: UUID
     ): OrderResponseDto {
         return orderDtoMapper.toDto(orderService.getOrder(orderId))
@@ -82,9 +80,8 @@ class OrderController(
     @Operation(summary = "Get customer orders")
     fun getOrdersByCustomer(
         @Parameter(description = "Customer UUID", example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
-        @org.hibernate.validator.constraints.UUID
         @PathVariable("id") customerId: UUID,
-        @Parameter(description = "List of drone states")
+        @Parameter(description = "List of drone states", example = "CREATED")
         @RequestParam(value = "state") stateDtos: Set<OrderStateDto>
     ): List<OrderResponseDto> {
         // TODO: add pagination

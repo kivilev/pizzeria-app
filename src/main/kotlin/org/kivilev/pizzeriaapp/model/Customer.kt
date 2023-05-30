@@ -21,12 +21,12 @@ class Customer(
     @Column(name = "id", nullable = false)
     var id: UUID? = null,
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name", nullable = false, length = 1000)
     val fullName: String,
 
-    @Column(name = "phone_number")
+    @Column(name = "phone_number", length = 30)
     var phoneNumber: String? = null,
 
-    @Column(name = "email")
+    @Column(name = "email", length = 100)
     var email: String? = null
 )

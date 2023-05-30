@@ -11,8 +11,6 @@ import org.kivilev.pizzeriaapp.model.Order
 import org.kivilev.pizzeriaapp.model.OrderState
 import org.kivilev.pizzeriaapp.repository.OrderRepository
 import org.springframework.stereotype.Service
-import java.time.Clock
-import java.time.ZonedDateTime
 import java.util.UUID
 import kotlin.jvm.optionals.getOrDefault
 
@@ -21,7 +19,7 @@ class OrderService(
     private val orderRepository: OrderRepository,
     private val customerService: CustomerService,
     private val toppingService: ToppingService,
-    private val clock: Clock
+    private val timeService: TimeService
 ) {
     @Transactional
     fun addOrder(customerId: UUID, email: String, toppingIds: Set<UUID>): Order {
@@ -37,14 +35,14 @@ class OrderService(
             it.email = email
             it.customer = customer
             it.toppings = toppings
-            it.createdDateTime = ZonedDateTime.now(clock)
+            it.createdDateTime = timeService.now()
         }
         val order = existedCreatedOrderOptional.getOrDefault(
             Order(
                 email = email,
                 customer = customer,
                 toppings = toppings,
-                createdDateTime = ZonedDateTime.now(clock)
+                createdDateTime = timeService.now()
             )
         )
 

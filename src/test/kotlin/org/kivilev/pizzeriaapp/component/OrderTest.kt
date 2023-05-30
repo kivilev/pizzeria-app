@@ -19,7 +19,6 @@ import org.kivilev.pizzeriaapp.model.Topping
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.delete
 import org.springframework.test.web.servlet.post
-import java.time.ZonedDateTime
 import java.util.UUID
 
 @Transactional
@@ -137,7 +136,7 @@ class OrderTest : ComponentTestBase() {
         val order = Order(
             email = VALID_EMAIL,
             state = state,
-            createdDateTime = ZonedDateTime.now(clock),
+            createdDateTime = timeService.now(),
             customer = createCustomer(),
             toppings = toppings
         )

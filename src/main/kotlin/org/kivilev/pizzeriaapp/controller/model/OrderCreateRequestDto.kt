@@ -11,7 +11,7 @@ data class OrderCreateRequestDto(
     val customerId: UUID,
 
     @field:Email
-    @field:Schema(description = "Order email", required = true, example = "email@email.com")
+    @field:Schema(description = "Order email", required = true, example = "email@email.com", maxLength = 100)
     val email: String,
 
     @field:ArraySchema(schema = Schema(description = "List of toppings UUID", allOf = [UUID::class]))

@@ -9,5 +9,8 @@ import io.swagger.v3.oas.annotations.media.Schema
 
 @Schema(description = "Order state")
 enum class OrderStateDto {
-    CREATED, DELIVERING, DELIVERED, CANCELLED
+    CREATED,
+    DELIVERING,
+    DELIVERED,
+    CANCELLED
 }

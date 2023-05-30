@@ -12,8 +12,8 @@ import java.util.UUID
 data class ToppingResponseDto(
     @field:Schema(description = "Topping Id", required = true, example = "e4d15d95-3521-441e-bafa-2f3fe279c1a0")
     val id: UUID,
-    @field:Schema(description = "Unique code", required = true, pattern = "^[A-Z0-9_]+\$", example = "CODE_TOPPING_1")
+    @field:Schema(description = "Unique code", required = true, pattern = "^[A-Z0-9_]+\$", example = "CODE_TOPPING_1", maxLength = 100)
     val code: String,
-    @field:Schema(description = "Full name", required = true, example = "Topping full name")
+    @field:Schema(description = "Full name", required = true, example = "Topping full name", maxLength = 1000)
     val fullName: String
 )

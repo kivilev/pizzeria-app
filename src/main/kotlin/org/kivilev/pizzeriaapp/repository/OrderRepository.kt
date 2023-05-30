@@ -8,7 +8,7 @@ package org.kivilev.pizzeriaapp.repository
 import jakarta.persistence.LockModeType
 import org.kivilev.pizzeriaapp.model.Order
 import org.kivilev.pizzeriaapp.model.OrderState
-import org.kivilev.pizzeriaapp.model.ToppingsUniqueCustomersReport
+import org.kivilev.pizzeriaapp.model.ToppingsUniqueCustomersReportDto
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Lock
 import org.springframework.data.jpa.repository.Query
@@ -36,5 +36,5 @@ interface OrderRepository : JpaRepository<Order, UUID> {
          order by t.fullName
     """
     )
-    fun getToppingsUniqueCustomersReport(): List<ToppingsUniqueCustomersReport>
+    fun getToppingsUniqueCustomersReport(): List<ToppingsUniqueCustomersReportDto>
 }

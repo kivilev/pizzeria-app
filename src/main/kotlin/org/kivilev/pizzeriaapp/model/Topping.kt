@@ -21,9 +21,9 @@ class Topping(
     @Column(name = "id", nullable = false)
     var id: UUID? = null,
 
-    @Column(name = "code", nullable = false, unique = false)
+    @Column(name = "code", nullable = false, unique = false, length = 100)
     val code: String,
 
-    @Column(name = "full_name", nullable = false)
+    @Column(name = "full_name", nullable = false, length = 1000)
     val fullName: String
 )

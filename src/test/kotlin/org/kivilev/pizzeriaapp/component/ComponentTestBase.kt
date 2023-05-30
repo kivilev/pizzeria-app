@@ -5,11 +5,11 @@ import edu.umd.cs.findbugs.annotations.SuppressFBWarnings
 import org.kivilev.pizzeriaapp.repository.CustomerRepository
 import org.kivilev.pizzeriaapp.repository.OrderRepository
 import org.kivilev.pizzeriaapp.repository.ToppingRepository
+import org.kivilev.pizzeriaapp.service.TimeService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.web.servlet.MockMvc
-import java.time.Clock
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -31,5 +31,5 @@ class ComponentTestBase {
     lateinit var objectMapper: ObjectMapper
 
     @Autowired
-    lateinit var clock: Clock
+    lateinit var timeService: TimeService
 }

@@ -12,7 +12,6 @@ import org.kivilev.pizzeriaapp.model.OrderState
 import org.kivilev.pizzeriaapp.model.Topping
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.get
-import java.time.ZonedDateTime
 
 @Transactional
 class ReportTest : ComponentTestBase() {
@@ -45,7 +44,7 @@ class ReportTest : ComponentTestBase() {
         val order = Order(
             email = VALID_EMAIL,
             state = state,
-            createdDateTime = ZonedDateTime.now(clock),
+            createdDateTime = timeService.now(),
             customer = createCustomer(),
             toppings = toppings
         )
